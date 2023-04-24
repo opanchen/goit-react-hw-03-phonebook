@@ -7,7 +7,6 @@ export class ContactForm extends Component {
     
     static propTypes = {
         onSubmit: PropTypes.func.isRequired,
-        checkContactName: PropTypes.func.isRequired,
     }
 
     state = {
@@ -26,12 +25,6 @@ export class ContactForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const {name} = e.target.elements;
-
-        if (this.props.checkContactName(name.value)) {
-            alert(`${name.value} is already in contacts.`)
-            return
-        }
         
         this.props.onSubmit(this.state)
         this.reset()
